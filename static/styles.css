@@ -1,0 +1,163 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+.navbar-brand {
+    font-weight: bold;
+    color: #28a745 !important;
+        }
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+/* Overall Card Styling */
+.plant_card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
+    /* This ensures everything inside follows Right-to-Left rules */
+    direction: rtl;
+    text-align: right;
+}
+
+.plant_card:hover {
+    transform: translateY(-10px);
+}
+
+/* Image styling */
+.plant_card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.plant-body {
+    padding: 1.2rem;
+}
+
+/* Plant Title (h5) */
+.plant-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Plant Price (span) */
+.plant-price {
+    color: #28a745; /* A nice green for the price */
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+
+
+/* The Add to Cart Button */
+.btn-add {
+    width: 100%;
+    background-color: #3b5d7d; /* Your signature blue */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+
+.btn-add:hover {
+    background-color: #2a445c;
+}
+/* header*/
+.heeder{
+    background-color: #477bff;
+    color: #F8F9FA;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+
+.plant-body-table {
+    padding: 0.5rem;
+}
+
+/* button for deletion */
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background: rgb(255, 135, 65);
+  background: linear-gradient(
+    250deg,
+    rgba(255, 135, 65, 1) 15%,
+    rgba(255, 65, 65, 1) 65%
+  );
+}
+
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: white;
+}
+/* text */
+.text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: 0.3s;
+}
+/* hover effect on button width */
+.Btn:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: 0.3s;
+}
+
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: 0.3s;
+  padding-left: 20px;
+}
+/* hover effect button's text */
+.Btn:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: 0.3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.Btn:active {
+  transform: translate(2px, 2px);
+}

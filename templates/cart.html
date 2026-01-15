@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-start">النبتة</th>
+            <th class="text-center">الكمية</th>
+            <th class="text-end">السعر</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for plant in plants %}
+        <tr>
+            <td>
+                        <h5 class="plant-title">{{plant["name"]}}</h5>
+                        <span class="plant-price">{{plant["price"]}}ألف</span>
+                        <form action="/cart" method="post">
+                            <input type="hidden" name="remove" value="{{plant['id']}}">
+                        <!--Deletion button from the internet-->
+                        <button class="Btn" type="submit">
+  <div class="sign">
+    <svg
+      viewBox="0 0 16 16"
+      class="bi bi-trash3-fill"
+      fill="currentColor"
+      height="18"
+      width="18"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"
+      ></path>
+    </svg>
+  </div>
+
+  <div class="text">Delete</div>
+</button>
+                        </form>
+            </td>
+            <td>
+                <div class="input-group input-group-sm mx-auto" style="width: 100px;">
+                    <button onclick="changeQty(this, -1, {{plant['price']}})">-</button>
+                    <input type="text" class="form-control text-center qty-input" value="1" readonly>
+                    <button onclick="changeQty(this, 1, {{plant['price']}})">+</button>
+                </div>
+            </td>
+            <td class="text-end total">{{plant["price"]}}ألف</td>
+        </tr>
+
+
+        {% endfor %}
+    </tbody>
+
+</table>
+<div class="text-center mt-5 mb-4">
+    <h3>الإجمالي الكلي: <span id="grand" class="text-success"></span></h3>
+</div>
+<form action="/" method="post">
+    <input type="hidden">
+    <button type="submit" class="btn btn-primary d-block mx-auto">حاسب</button>
+</form>
+<script>
+    // calculate the Grand total
+    function grand(){
+        const allRows = document.querySelectorAll(".total");
+        const Grand = document.querySelector("#grand");
+        let sum = 0;
+        for(let i = 0; i < allRows.length; i++){
+            sum = sum + parseFloat(allRows[i].innerText.replace("ألف",""));
+        };
+        Grand.innerText = sum.toFixed(2) + "ألف";
+    }
+    //ensure grand total is excist without pressing any button
+    grand();
+    //update the quantity
+    function changeQty(button, delta, prices){
+        // acess specifically the row that contains product
+        const row = button.closest("tr");
+        const input = row.querySelector(".qty-input");
+        const total = row.querySelector(".total");
+        let temp = (delta + parseInt(input.value));
+        let tot = (temp * prices)
+        if(temp >= 1){
+            input.value = temp;
+            total.innerText = (tot.toFixed(2)) + "ألف";
+            grand();
+        }
+    }
+</script>
+
+{% endblock %}

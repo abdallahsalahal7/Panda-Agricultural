@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<form action="/login" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="اسم المستخدم">
+    </div>
+    <div class="mb-3">
+        <input name="password" placeholder="كلمة المرور" type="password" class="form-control mx-auto w-auto">
+    </div>
+    <button class="btn btn-primary d-block mx-auto" type="submit">تسجيل</button>
+</form>
+
+
+{% endblock %}

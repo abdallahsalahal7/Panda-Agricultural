@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<form action="/register" method="post">
+    <div class="mb-3">
+        <label class="form-label d-block text-center" for="user">اسم المستخدم (بالإنجليزي فقط)</label>
+        <input id="user"class="form-control mx-auto w-auto" name="username" placeholder="اسم المستخدم" autocomplete="off" autofocus type="text">
+    </div>
+    <div class="mb-3">
+        <label class="form-label d-block text-center" for="p1">كلمة السر (بالإنجليزي فقط)</label>
+        <input id="p1" name="p1" class="form-control mx-auto w-auto" type="password" placeholder="كلمة السر">
+    </div>
+    <div class="mb-3">
+        <input id="p2" name="p2" class="form-control mx-auto w-auto" type="password" placeholder="تأكيد كلمة السر">
+    </div>
+    <button type="submit" class="btn btn-primary d-block mx-auto">انشاء حساب</button>
+</form>
+
+{% endblock %}

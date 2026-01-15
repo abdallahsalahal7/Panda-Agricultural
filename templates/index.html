@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="container mt-5">
+    <div class="row">
+    {% for plant in plants %}
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="plant_card shadow-sm">
+                <img src="{{plant['image']}}" alt="{{plant['name']}}">
+                <div class="plant-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="plant-title">{{plant["name"]}}</h5>
+                        <span class="plant-price">{{plant["price"]}}ألف</span>
+                    </div>
+                    <p>{{plant["description"]}}</p>
+                    <form action="/cart" method="post">
+                        <input type="hidden" name="add" value="{{plant['id']}}">
+                        <button class="btn btn-add" type="submit">اضف للعربة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
